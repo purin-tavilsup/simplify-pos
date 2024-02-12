@@ -73,9 +73,27 @@ public class ProductRepository : IProductRepository
 		return results.ToList();
 	}
 
-	public Task<Product> GetProductByIdAsync(string id)
+	public async Task<Product?> GetProductByIdAsync(string id)
 	{
-		throw new NotImplementedException();
+		using var connection = _context.CreateConnection();
+		connection.Open();
+
+		const string sqlCommand = """
+		                          SELECT
+		                          Id,
+		                          Barcode,
+		                          Description,
+		                          Brand,
+		                          UnitPrice,
+		                          QuantityInStock
+		                          FROM Product
+		                          WHERE Id = @Id
+		                          """;
+		
+		var sqlParameters = new { Id = id };
+		var result = await connection.QueryAsync<Product>(sqlCommand, sqlParameters);
+
+		return result.FirstOrDefault();
 	}
 
 	public Task<Product> GetProductByBarcodeAsync(string barcode)

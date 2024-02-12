@@ -8,7 +8,7 @@ public class Product
 
 	public string Description { get; set; } = string.Empty;
 
-	public string Brand { get; set; } = string.Empty;
+	public string? Brand { get; set; }
 
 	public decimal UnitPrice { get; set; }
 

@@ -1,3 +1,6 @@
-﻿namespace SimplifyPos.Application.Products.List;
+﻿using FluentResults;
+using SimplifyPos.Application.Abstractions;
 
-public record ListProductsQuery();
+namespace SimplifyPos.Application.Products.List;
+
+public record ListProductsQuery : IQuery<Result<IEnumerable<ProductDto>>>;

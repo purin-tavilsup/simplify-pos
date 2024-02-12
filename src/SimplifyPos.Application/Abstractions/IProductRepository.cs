@@ -8,7 +8,7 @@ public interface IProductRepository
 
 	public Task<IEnumerable<Product>> ListProductsAsync();
 
-	public Task<Product> GetProductByIdAsync(string id);
+	public Task<Product?> GetProductByIdAsync(string id);
 
 	public Task<Product> GetProductByBarcodeAsync(string barcode);
 

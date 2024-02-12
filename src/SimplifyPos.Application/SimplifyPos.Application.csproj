@@ -7,15 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentResults" Version="3.15.2" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
     <PackageReference Include="MediatR" Version="12.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Common\Behaviors\" />
-    <Folder Include="Products\Create\" />
     <Folder Include="Products\Delete\" />
-    <Folder Include="Products\Get\" />
     <Folder Include="Products\Update\" />
   </ItemGroup>
 
