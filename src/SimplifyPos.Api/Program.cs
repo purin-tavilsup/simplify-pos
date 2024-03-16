@@ -1,25 +1,24 @@
 using SimplifyPos.Application.Extensions.DependencyInjection;
 using SimplifyPos.Infrastructure.Extensions.DependencyInjection;
 
-namespace SimplifyPos.Api
+namespace SimplifyPos.Api;
+
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+        var builder = WebApplication.CreateBuilder(args);
 
-			builder.Services.AddApplication();
-			builder.Services.AddInfrastructure();
-			builder.Services.AddControllers();
+        builder.Services.AddApplication();
+        builder.Services.AddInfrastructure();
+        builder.Services.AddControllers();
 			
-            var app = builder.Build();
+        var app = builder.Build();
 
-            app.UseHttpsRedirection();
-            app.UseAuthorization();
-            app.MapControllers();
+        app.UseHttpsRedirection();
+        app.UseAuthorization();
+        app.MapControllers();
 
-            app.Run();
-        }
+        app.Run();
     }
 }

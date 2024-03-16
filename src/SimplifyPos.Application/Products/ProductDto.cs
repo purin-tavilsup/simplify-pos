@@ -1,8 +1,6 @@
-﻿
+﻿namespace SimplifyPos.Application.Products;
 
-namespace SimplifyPos.Application.Products;
-
-public class ProductDto
+public record ProductDto
 {
     public string Id { get; set; } = string.Empty;
 
@@ -10,7 +8,7 @@ public class ProductDto
 
     public string Description { get; set; } = string.Empty;
 
-    public string Brand { get; set; } = string.Empty;
+    public string? Brand { get; set; } = string.Empty;
 
     public decimal UnitPrice { get; set; }
 

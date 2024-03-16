@@ -29,14 +29,14 @@ public class ProductsController : ControllerBase
     {
         var result = await _mediator.Send(request);
 
-        if (result.IsSuccess)
+        if (result.IsFailed)
         {
-            var createdProduct = result.Value;
-            var uri = HttpContext.Request.Path.Value;
-            return Created(uri, createdProduct);
+            return CreateErrorResponse(result.Errors.First());
         }
         
-        return CreateErrorResponse(result.Errors.First());
+        var createdProduct = result.Value;
+        var uri = HttpContext.Request.Path.Value;
+        return Created(uri, createdProduct);
     }
 
     [HttpGet("{id}")]
@@ -47,12 +47,12 @@ public class ProductsController : ControllerBase
     {
         var result = await _mediator.Send(new GetProductByIdQuery(id));
 
-        if (result.IsSuccess)
+        if (result.IsFailed)
         {
-            return Ok(result.Value);
+            return CreateErrorResponse(result.Errors.First());
         }
 
-        return CreateErrorResponse(result.Errors.First());
+        return Ok(result.Value);
     }
     
     [HttpGet]
@@ -62,12 +62,12 @@ public class ProductsController : ControllerBase
     {
         var result = await _mediator.Send(new ListProductsQuery());
 
-        if (result.IsSuccess)
+        if (result.IsFailed)
         {
-            return Ok(result.Value);
+            return CreateErrorResponse(result.Errors.First());
         }
 
-        return CreateErrorResponse(result.Errors.First());
+        return Ok(result.Value);
     }
 
     private ObjectResult CreateErrorResponse(IReason error)
