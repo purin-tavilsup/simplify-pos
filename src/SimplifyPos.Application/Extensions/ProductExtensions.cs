@@ -1,5 +1,5 @@
 ﻿using SimplifyPos.Application.Products;
-using SimplifyPos.Domain.Entities;
+using SimplifyPos.Domain.Entities.Inventory;
 
 namespace SimplifyPos.Application.Extensions;
 

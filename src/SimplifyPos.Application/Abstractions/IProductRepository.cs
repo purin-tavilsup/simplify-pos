@@ -1,4 +1,4 @@
-﻿using SimplifyPos.Domain.Entities;
+﻿using SimplifyPos.Domain.Entities.Inventory;
 
 namespace SimplifyPos.Application.Abstractions;
 

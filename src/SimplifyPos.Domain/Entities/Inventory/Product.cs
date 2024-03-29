@@ -1,4 +1,4 @@
-﻿namespace SimplifyPos.Domain.Entities;
+﻿namespace SimplifyPos.Domain.Entities.Inventory;
 
 public class Product
 {

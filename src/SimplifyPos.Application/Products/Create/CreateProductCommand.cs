@@ -1,6 +1,6 @@
 ﻿using FluentResults;
 using SimplifyPos.Application.Abstractions;
-using SimplifyPos.Domain.Entities;
+using SimplifyPos.Domain.Entities.Inventory;
 
 namespace SimplifyPos.Application.Products.Create;
 
