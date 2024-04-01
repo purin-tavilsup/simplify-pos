@@ -25,7 +25,7 @@ public class ProductsController : ControllerBase
     [HttpPost]
     [ProducesResponseType<ProductDto>(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> CreateProductAsync([FromBody]CreateProductCommand request)
+    public async Task<IActionResult> CreateProductAsync([FromBody]AddProductCommand request)
     {
         var result = await _mediator.Send(request);
 

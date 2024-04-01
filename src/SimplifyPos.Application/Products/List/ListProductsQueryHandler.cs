@@ -15,7 +15,7 @@ public class ListProductsQueryHandler : IQueryHandler<ListProductsQuery, Result<
     
     public async Task<Result<IEnumerable<ProductDto>>> Handle(ListProductsQuery query, CancellationToken cancellationToken)
     {
-        var results = await _productRepository.ListProductsAsync();
+        var results = await _productRepository.GetProductsAsync();
         
         return Result.Ok(results.ToDto());
     }

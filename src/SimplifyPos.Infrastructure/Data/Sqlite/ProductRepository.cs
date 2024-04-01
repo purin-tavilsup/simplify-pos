@@ -13,7 +13,7 @@ public class ProductRepository : IProductRepository
 		_context = context;
 	}
 
-	public async Task CreateProductAsync(Product product)
+	public async Task CreateProductAsync(InventoryProduct inventoryProduct)
 	{
 		using var connection = _context.CreateConnection();
 		connection.Open();
@@ -41,18 +41,18 @@ public class ProductRepository : IProductRepository
 
 		var sqlParameters = new
 		{
-			product.Id,
-			product.Barcode,
-			product.Description,
-			product.Brand,
-			product.UnitPrice,
-			product.QuantityInStock
+			inventoryProduct.Id,
+			inventoryProduct.Barcode,
+			inventoryProduct.Description,
+			inventoryProduct.Brand,
+			inventoryProduct.UnitPrice,
+			inventoryProduct.QuantityInStock
 		};
 
 		await connection.ExecuteAsync(sqlCommand, sqlParameters);
 	}
 
-	public async Task<IEnumerable<Product>> ListProductsAsync()
+	public async Task<IEnumerable<InventoryProduct>> GetProductsAsync()
 	{
 		using var connection = _context.CreateConnection();
 		connection.Open();
@@ -68,12 +68,12 @@ public class ProductRepository : IProductRepository
 								  FROM Product
 								  """;
 
-		var results = await connection.QueryAsync<Product>(sqlCommand);
+		var results = await connection.QueryAsync<InventoryProduct>(sqlCommand);
 
 		return results.ToList();
 	}
 
-	public async Task<Product?> GetProductByIdAsync(string id)
+	public async Task<InventoryProduct?> GetProductByIdAsync(string id)
 	{
 		using var connection = _context.CreateConnection();
 		connection.Open();
@@ -91,17 +91,17 @@ public class ProductRepository : IProductRepository
 		                          """;
 		
 		var sqlParameters = new { Id = id };
-		var result = await connection.QueryAsync<Product>(sqlCommand, sqlParameters);
+		var result = await connection.QueryAsync<InventoryProduct>(sqlCommand, sqlParameters);
 
 		return result.FirstOrDefault();
 	}
 
-	public Task<Product> GetProductByBarcodeAsync(string barcode)
+	public Task<InventoryProduct> GetProductByBarcodeAsync(string barcode)
 	{
 		throw new NotImplementedException();
 	}
 
-	public Task UpdateProduct(Product product)
+	public Task UpdateProduct(InventoryProduct inventoryProduct)
 	{
 		throw new NotImplementedException();
 	}

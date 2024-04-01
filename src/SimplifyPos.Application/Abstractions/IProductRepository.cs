@@ -4,15 +4,15 @@ namespace SimplifyPos.Application.Abstractions;
 
 public interface IProductRepository
 {
-	public Task CreateProductAsync(Product product);
+	public Task CreateProductAsync(InventoryProduct inventoryProduct);
 
-	public Task<IEnumerable<Product>> ListProductsAsync();
+	public Task<IEnumerable<InventoryProduct>> GetProductsAsync();
 
-	public Task<Product?> GetProductByIdAsync(string id);
+	public Task<InventoryProduct?> GetProductByIdAsync(string id);
 
-	public Task<Product> GetProductByBarcodeAsync(string barcode);
+	public Task<InventoryProduct> GetProductByBarcodeAsync(string barcode);
 
-	public Task UpdateProduct(Product product);
+	public Task UpdateProduct(InventoryProduct inventoryProduct);
 
 	public Task DeleteProductByIdAsync(string id);
 }

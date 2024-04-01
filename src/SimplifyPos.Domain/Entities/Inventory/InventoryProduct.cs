@@ -1,6 +1,6 @@
 ﻿namespace SimplifyPos.Domain.Entities.Inventory;
 
-public class Product
+public class InventoryProduct
 {
 	public string Id { get; set; } = string.Empty;
 

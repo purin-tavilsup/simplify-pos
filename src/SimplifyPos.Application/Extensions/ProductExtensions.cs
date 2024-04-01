@@ -5,7 +5,7 @@ namespace SimplifyPos.Application.Extensions;
 
 public static class ProductExtensions
 {
-    public static ProductDto ToDto(this Product entity)
+    public static ProductDto ToDto(this InventoryProduct entity)
     {
         return new ProductDto
         {
@@ -18,7 +18,7 @@ public static class ProductExtensions
         };
     }
     
-    public static IEnumerable<ProductDto> ToDto(this IEnumerable<Product> entities)
+    public static IEnumerable<ProductDto> ToDto(this IEnumerable<InventoryProduct> entities)
     {
         return entities.Select(x => x.ToDto());
     }

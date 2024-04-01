@@ -4,16 +4,16 @@ using SimplifyPos.Application.Extensions;
 
 namespace SimplifyPos.Application.Products.Create;
 
-public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, Result<ProductDto>>
+public class AddProductCommandHandler : ICommandHandler<AddProductCommand, Result<ProductDto>>
 {
     private readonly IProductRepository _productRepository;
     
-    public CreateProductCommandHandler(IProductRepository productRepository)
+    public AddProductCommandHandler(IProductRepository productRepository)
     {
         _productRepository = productRepository;
     }
 
-    public async Task<Result<ProductDto>> Handle(CreateProductCommand command, CancellationToken cancellationToken)
+    public async Task<Result<ProductDto>> Handle(AddProductCommand command, CancellationToken cancellationToken)
     {
         var id = Guid.NewGuid().ToString("N");
         var entity = command.ToEntity(id);
